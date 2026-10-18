@@ -15,6 +15,30 @@ Part of **[ARIEX4Ops / X4](https://github.com/dhe-cruzer69)**.
 
 Memory must never be a mysterious black box. Every stored item carries provenance, namespace, and export/deletion support.
 
+<!-- X4-APEX-DIAGRAM-START:x4-memory -->
+
+```mermaid
+flowchart TB
+    WRITE[Memory Write] --> META[Namespace and Provenance Metadata]
+    META --> CLASSIFY{Memory Layer}
+    CLASSIFY --> WORK[Working Memory]
+    CLASSIFY --> EPISODIC[Episodic Memory]
+    CLASSIFY --> SEMANTIC[Semantic Memory]
+    CLASSIFY --> GRAPH[Knowledge Graph]
+    WORK --> POLICY[Privacy and Retention Controls]
+    EPISODIC --> POLICY
+    SEMANTIC --> POLICY
+    GRAPH --> POLICY
+    POLICY --> STORE[(Persistent Memory)]
+    READ[Memory Read] --> STORE
+    STORE --> RESULT[Memory Result with Provenance]
+    EXPORT[Export or Deletion Request] --> STORE
+    AGENT[x4-agents] --> READ
+    AGENT --> WRITE
+```
+
+<!-- X4-APEX-DIAGRAM-END:x4-memory -->
+
 ## Related
 
 - [x4-agents](https://github.com/dhe-cruzer69/x4-agents)
